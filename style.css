@@ -1,16 +1,20 @@
-header{
-  background: red;
+header {
+	background: red;
 }
 
-h1{
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: antiquewhite;
-  padding: 20px;
+h1 {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: antiquewhite;
+	padding: 20px;
 }
 
 ul {
-  list-style: none;
-  color: blue;
-  font-size: larger;
-  text-transform: capitalize;
+	list-style: none;
+	color: blue;
+	font-size: larger;
+	text-transform: capitalize;
+}
+
+h2 {
+	color: green;
 }
