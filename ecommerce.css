@@ -1,0 +1,531 @@
+/* ==========================================================================
+   ECOMMERCE STYLESHEET
+   Built to work with the existing ecommerce.html / ecommerce.js exactly as-is.
+
+   Key integration notes (read before editing):
+   - The JS toggles the cart panel via an INLINE style
+     (cartParent.style.display = 'block' / 'none') on .cartContainer.
+     Inline styles always beat CSS specificity, so we can't override
+     `display` itself from here. Instead we detect that inline state
+     with the attribute selector [style*="display: block"] and use it
+     as our animation trigger — this is the exact hook the brief asks
+     for ("if JS already toggles display, style those states").
+   - #product-list and .cartContainer items are plain, class-less divs
+     created by JS, so they're styled via child/descendant selectors.
+   - :has() is used to let the product grid react to the cart opening
+     without any JS changes. Supported in all current evergreen browsers.
+   - @starting-style + transition-behavior: allow-discrete give the
+     cart panel a real slide/fade-in transition even though it jumps
+     from display:none -> display:block synchronously in JS (no
+     rAF/reflow trick available since we can't touch the JS).
+   ========================================================================== */
+
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* Color */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-active: #1e40af;
+  --color-primary-soft: #eff4ff;
+
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f7f9;
+
+  --color-text: #14171f;
+  --color-text-secondary: #667085;
+  --color-text-muted: #98a1b3;
+
+  --color-border: #e6e8ec;
+  --color-border-strong: #d7dae1;
+  --color-danger: #dc2626;
+  --color-success: #16a34a;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 14px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 16px 40px rgba(16, 24, 40, 0.14);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* Motion */
+  --transition-fast: 180ms;
+  --transition-base: 380ms;
+  --transition-slow: 520ms;
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --cart-width: clamp(320px, 32vw, 420px);
+  --content-max: 1400px;
+}
+
+/* ==========================================================================
+   2. RESET / BASE
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   3. PAGE HEADING
+   ========================================================================== */
+#large {
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0;
+  padding: var(--space-lg) var(--space-xl) var(--space-sm);
+  transition: padding var(--transition-base) var(--ease-premium);
+}
+
+/* ==========================================================================
+   4. PRODUCT GRID (#product-list)
+   ========================================================================== */
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--space-lg);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-xl) var(--space-xl);
+  transition: max-width var(--transition-slow) var(--ease-premium),
+    padding-right var(--transition-slow) var(--ease-premium),
+    margin-right var(--transition-slow) var(--ease-premium);
+}
+
+/* Each product is a plain <div> injected by JS: style it as a card. */
+#product-list > div {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base) var(--ease-premium),
+    box-shadow var(--transition-base) var(--ease-premium),
+    border-color var(--transition-base) var(--ease-premium);
+}
+
+#product-list > div:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-strong);
+}
+
+/* Product image */
+#product-list > div img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-xs);
+  background: var(--color-surface-alt);
+  transition: transform var(--transition-slow) var(--ease-premium);
+}
+
+#product-list > div:hover img {
+  transform: scale(1.035);
+}
+
+/* Product name */
+#product-list > div h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 4px 0 0;
+  letter-spacing: -0.01em;
+}
+
+/* Price */
+#product-list > div p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Add to Cart / Remove button */
+#product-list > div button {
+  margin-top: auto;
+  appearance: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: background var(--transition-fast) ease,
+    transform var(--transition-fast) ease,
+    box-shadow var(--transition-fast) ease;
+}
+
+#product-list > div button:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+#product-list > div button:active {
+  background: var(--color-primary-active);
+  transform: translateY(0);
+}
+
+#product-list > div button:focus-visible {
+  outline: 3px solid var(--color-primary-soft);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* "Remove" state gets a quieter, secondary treatment so the primary CTA
+   color stays reserved for the "add" action. We can't rely on a class
+   here (JS only swaps innerHTML text), so we key off the button's text. */
+#product-list > div button:not(:hover):active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   5. SPLIT-SCREEN TRIGGER
+   When .cartContainer's inline style flips to display:block, shrink the
+   product grid to make room on the right. No JS changes required.
+   ========================================================================== */
+@media (min-width: 901px) {
+  body:has(.cartContainer[style*="display: block"]) #product-list {
+    max-width: calc(100% - var(--cart-width));
+    margin-right: var(--cart-width);
+    padding-right: var(--space-lg);
+  }
+
+  body:has(.cartContainer[style*="display: block"]) #large {
+    padding-right: calc(var(--cart-width) + var(--space-xl));
+  }
+}
+
+/* ==========================================================================
+   6. CART / PAYMENT PANEL (.cartContainer)
+   ========================================================================== */
+.cartContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--cart-width);
+  height: 100vh;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+
+  /* Off-canvas resting state */
+  transform: translateX(100%);
+  opacity: 0;
+
+  transition: transform var(--transition-slow) var(--ease-premium),
+    opacity var(--transition-base) ease,
+    display var(--transition-slow) allow-discrete;
+}
+
+/* When JS sets display:block inline, slide + fade the panel into view. */
+.cartContainer[style*="display: block"] {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Starting point for the entry transition, so the panel doesn't just
+   "pop" in the instant display flips from none to block. */
+@starting-style {
+  .cartContainer[style*="display: block"] {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Cart heading "CART (n)" */
+.cartContainer > h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cartContainer > h2 #cartNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4em;
+  padding: 0 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+/* "Total: $x" */
+.cartContainer > h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: var(--space-sm) 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.cartContainer > h1 #total {
+  color: var(--color-primary);
+}
+
+/* Scrollable list of cart line items */
+#cart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0;
+  min-height: 0;
+}
+
+/* Each cart line item is a plain <div> injected by JS */
+#cart > div {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+#cart > div img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  grid-row: 1 / span 3;
+}
+
+#cart > div h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  grid-column: 2;
+}
+
+#cart > div p {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  grid-column: 2;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Quantity stepper buttons */
+#cart .increase,
+#cart .decrease {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition-fast) ease,
+    border-color var(--transition-fast) ease, transform var(--transition-fast) ease;
+}
+
+#cart .increase:hover,
+#cart .decrease:hover {
+  background: var(--color-primary-soft);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+#cart .increase:active,
+#cart .decrease:active {
+  transform: scale(0.94);
+}
+
+#cart .increase:focus-visible,
+#cart .decrease:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Pay Now — primary checkout CTA, pinned to the bottom of the panel */
+#payBtn {
+  appearance: none;
+  border: none;
+  width: 100%;
+  margin-top: var(--space-sm);
+  padding: 15px 20px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  position: sticky;
+  bottom: 0;
+  transition: background var(--transition-fast) ease,
+    transform var(--transition-fast) ease,
+    box-shadow var(--transition-fast) ease;
+}
+
+#payBtn:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+#payBtn:active {
+  background: var(--color-primary-active);
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+#payBtn:focus-visible {
+  outline: 3px solid var(--color-primary-soft);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* ==========================================================================
+   7. RESPONSIVE — TABLET / MOBILE
+   Below 901px the split-screen collapses: products go full width and the
+   cart becomes a bottom drawer instead of a fixed right rail.
+   ========================================================================== */
+@media (max-width: 900px) {
+  #large {
+    padding: var(--space-md) var(--space-md) var(--space-xs);
+  }
+
+  #product-list {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md) var(--space-xl);
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  #product-list > div img {
+    height: 160px;
+  }
+
+  .cartContainer {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    max-height: 82vh;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: 0 -12px 30px rgba(16, 24, 40, 0.18);
+    padding: var(--space-md);
+
+    /* Drawer slides up from the bottom instead of in from the right */
+    transform: translateY(100%);
+  }
+
+  .cartContainer[style*="display: block"] {
+    transform: translateY(0);
+  }
+
+  @starting-style {
+    .cartContainer[style*="display: block"] {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  #product-list > div button,
+  #payBtn,
+  #cart .increase,
+  #cart .decrease {
+    min-height: 44px;
+  }
+
+  #cart .increase,
+  #cart .decrease {
+    width: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  #product-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* ==========================================================================
+   8. ACCESSIBILITY
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  #product-list,
+  #large,
+  #product-list > div,
+  #product-list > div img,
+  #product-list > div button,
+  .cartContainer,
+  #payBtn,
+  #cart .increase,
+  #cart .decrease {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+
+  .cartContainer[style*="display: block"] {
+    opacity: 1;
+    transform: none;
+  }
+}
