@@ -391,3 +391,2481 @@ button[type="reset"]:hover {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Foodie | Delicious Meals, Delivered With Love</title>
+
+<meta name="description" content="Discover delicious Nigerian and international meals at Foodie. Explore our menu and find your next favourite meal.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --green: #176b43;
+    --dark-green: #104b30;
+    --orange: #ff8c42;
+    --cream: #fff9ef;
+    --dark: #242b25;
+    --white: #ffffff;
+    --shadow: 0 8px 25px rgba(0,0,0,0.09);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+}
+
+.navbar {
+    min-height: 78px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: 900;
+    color: var(--green);
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--orange);
+}
+
+.cart-button {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 11px 16px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 590px;
+    display: flex;
+    align-items: center;
+    background:
+    linear-gradient(110deg, rgba(12,65,39,0.97), rgba(20,105,63,0.84)),
+    url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 35px;
+    padding: 65px 0;
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.15);
+    color: #ffcf9f;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1.12;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #ffb16e;
+}
+
+.hero p {
+    color: #e2f0e7;
+    font-size: 17px;
+    max-width: 560px;
+    margin-bottom: 28px;
+}
+
+.primary-button {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.primary-button:hover {
+    background: #ee7627;
+    transform: translateY(-3px);
+}
+
+.secondary-button {
+    display: inline-block;
+    padding: 14px 23px;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+    margin-left: 10px;
+}
+
+.hero-image {
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border: 8px solid rgba(255,255,255,0.16);
+    border-radius: 50% 50% 20px 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* BENEFITS */
+
+.benefits {
+    background: white;
+    padding: 28px 0;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #eaf5ed;
+    font-size: 24px;
+}
+
+.benefit h3 {
+    font-size: 14px;
+}
+
+.benefit p {
+    color: #777;
+    font-size: 12px;
+}
+
+/* GENERAL SECTIONS */
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.section {
+    padding: 75px 0;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 38px;
+}
+
+.section-heading .eyebrow {
+    color: var(--orange);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.section-heading h2 {
+    color: var(--green);
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.25;
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: #747474;
+}
+
+/* CATEGORY BUTTONS */
+
+.menu-section {
+    background: #fff9ef;
+}
+
+.search-box {
+    max-width: 550px;
+    margin: 0 auto 25px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid #e3e3e3;
+    background: white;
+    border-radius: 30px;
+    outline: none;
+    font-size: 15px;
+}
+
+.search-box input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(23,107,67,0.1);
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}
+
+.category {
+    padding: 10px 18px;
+    border: 1px solid #e2e2e2;
+    background: white;
+    border-radius: 30px;
+    color: #555;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.category:hover,
+.category.active {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
+}
+
+/* FOOD CARDS */
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+    border: 1px solid #f0ede6;
+}
+
+.food-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.13);
+}
+
+.food-image {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+}
+
+.food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.food-card:hover .food-image img {
+    transform: scale(1.07);
+}
+
+.food-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--orange);
+    color: white;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.food-info {
+    padding: 20px;
+}
+
+.food-info h3 {
+    color: var(--green);
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.food-description {
+    color: #777;
+    font-size: 13px;
+    min-height: 66px;
+}
+
+.food-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 17px 0;
+}
+
+.price {
+    color: var(--green);
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.portion {
+    color: #777;
+    font-size: 11px;
+    text-align: right;
+}
+
+.add-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--green);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.add-button:hover {
+    background: var(--orange);
+}
+
+/* CART */
+
+.cart-section {
+    background: #edf5ee;
+    padding: 35px 0;
+}
+
+.cart-panel {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.cart-panel h2 {
+    color: var(--green);
+    margin-bottom: 15px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.remove-button {
+    color: #c0392b;
+    border: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.empty-cart {
+    color: #777;
+    padding: 10px 0;
+}
+
+.cart-note {
+    color: #777;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* PROMOTION */
+
+.promo {
+    padding: 60px 0;
+    background: linear-gradient(120deg,#ff914d,#ffb36e);
+    color: white;
+}
+
+.promo-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.promo h2 {
+    font-size: clamp(28px,4vw,40px);
+    line-height: 1.25;
+}
+
+.promo p {
+    margin-top: 10px;
+}
+
+.promo .primary-button {
+    background: var(--green);
+    white-space: nowrap;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.about-content h2 {
+    color: var(--green);
+    font-size: 36px;
+    line-height: 1.25;
+    margin: 10px 0 18px;
+}
+
+.about-content p {
+    color: #707070;
+    margin-bottom: 15px;
+}
+
+.about-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.about-list li {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.about-list li::first-letter {
+    color: var(--green);
+}
+
+/* STATISTICS */
+
+.stats {
+    background: var(--green);
+    color: white;
+    padding: 45px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.stat h3 {
+    color: #ffb16e;
+    font-size: 35px;
+}
+
+.stat p {
+    color: #e4f1e8;
+    font-size: 13px;
+}
+
+/* HOW IT WORKS */
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.step {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.step-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    background: #eaf5ed;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    font-size: 30px;
+}
+
+.step h3 {
+    color: var(--green);
+    margin-bottom: 10px;
+}
+
+.step p {
+    color: #777;
+    font-size: 14px;
+}
+
+/* REVIEWS */
+
+.reviews {
+    background: #f0f6ef;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.review-card {
+    background: white;
+    padding: 28px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.stars {
+    color: #f5a623;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.review-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.review-person {
+    font-weight: bold;
+    color: var(--green);
+}
+
+.review-person small {
+    display: block;
+    color: #888;
+    font-weight: normal;
+}
+
+/* FAQ */
+
+.faq-list {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-list details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.faq-list summary {
+    cursor: pointer;
+    color: var(--green);
+    font-weight: bold;
+}
+
+.faq-list details p {
+    color: #777;
+    padding-top: 12px;
+}
+
+/* NEWSLETTER */
+
+.newsletter {
+    background: #fff0df;
+    padding: 55px 0;
+    text-align: center;
+}
+
+.newsletter h2 {
+    color: var(--green);
+    font-size: 32px;
+}
+
+.newsletter p {
+    color: #777;
+    margin: 10px 0 20px;
+}
+
+.newsletter-form {
+    max-width: 500px;
+    display: flex;
+    gap: 10px;
+    margin: auto;
+}
+
+.newsletter-form input {
+    min-width: 0;
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+}
+
+.newsletter-form button {
+    border: none;
+}
+
+/* FOOTER */
+
+footer {
+    background: #113d2a;
+    color: white;
+    padding: 55px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 35px;
+    margin-bottom: 35px;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.footer-logo span {
+    color: #ffb16e;
+}
+
+.footer-column p {
+    color: #c9ded0;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.footer-column h3 {
+    color: #ffb16e;
+    margin-bottom: 16px;
+    font-size: 17px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #d9e9df;
+}
+
+.footer-column a:hover {
+    color: #ffb16e;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.17);
+    padding-top: 20px;
+    text-align: center;
+    color: #c9ded0;
+    font-size: 12px;
+}
+
+/* TOAST MESSAGE */
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2000;
+    background: var(--green);
+    color: white;
+    padding: 15px 22px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: none;
+    max-width: 320px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width:900px) {
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 0.8fr;
+    }
+
+    .food-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .benefit-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:650px) {
+    .navbar {
+        padding: 14px 0;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        overflow-x: auto;
+        padding: 8px 0;
+        gap: 18px;
+    }
+
+    .nav-links li {
+        white-space: nowrap;
+    }
+
+    .cart-button {
+        padding: 9px 12px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        max-width: 380px;
+        margin: 10px auto 0;
+    }
+
+    .hero-image img {
+        height: 280px;
+    }
+
+    .secondary-button {
+        margin: 12px 0 0;
+    }
+
+    .food-grid,
+    .about-grid,
+    .steps-grid,
+    .review-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-image {
+        height: 230px;
+    }
+
+    .about-image img {
+        height: 300px;
+    }
+
+    .promo-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .benefit-grid {
+        gap: 18px 10px;
+    }
+
+    .benefit {
+        align-items: flex-start;
+    }
+
+    .benefit-icon {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="#home" class="logo">Food<span>ie.</span> 🍽️</a>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <button class="cart-button"
+        onclick="document.getElementById('cart').scrollIntoView()">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </button>
+
+    </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-content">
+
+        <div>
+            <span class="hero-label">🍴 GOOD FOOD, GOOD MOOD!</span>
+
+            <h1>
+                Taste the Joy of
+                <span>Great Food.</span>
+            </h1>
+
+            <p>
+                From the rich taste of Nigerian favourites to delicious
+                international meals, Foodie brings flavour, freshness
+                and happiness to your table. Discover your next favourite
+                meal today!
+            </p>
+
+            <a href="#menu" class="primary-button">
+                Explore Our Menu →
+            </a>
+
+            <a href="#about" class="secondary-button">
+                Discover Foodie
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"
+            alt="A delicious selection of freshly prepared food">
+        </div>
+
+    </div>
+</section>
+
+<!-- BENEFITS -->
+
+<section class="benefits">
+    <div class="container benefit-grid">
+
+        <div class="benefit">
+            <div class="benefit-icon">🥬</div>
+            <div>
+                <h3>Fresh Ingredients</h3>
+                <p>Quality ingredients in every meal.</p>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">👨‍🍳</div>
+            <div>
+                <h3>Made With Care</h3>
+                <p>Food prepared with attention to flavour.</p>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">🍲</div>
+            <div>
+                <h3>Many Choices</h3>
+                <p>Nigerian and international dishes.</p>
+            </div>
+        </div>
+
+        <div class="benefit">
+            <div class="benefit-icon">💚</div>
+            <div>
+                <h3>Food With Love</h3>
+                <p>Delicious meals for every occasion.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- MENU -->
+
+<section class="section menu-section" id="menu">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">Explore Our Delicious Menu</span>
+            <h2>Find Your Perfect Meal 🍽️</h2>
+            <p>
+                Every meal has a story, a special flavour and something
+                wonderful to offer. Explore our menu, compare portions
+                and discover the food that makes you happy.
+            </p>
+        </div>
+
+        <div class="search-box">
+            <input
+            type="search"
+            id="food-search"
+            placeholder="🔍 Search for pizza, egusi, spaghetti..."
+            aria-label="Search menu">
+        </div>
+
+        <div class="categories">
+            <button class="category active" data-category="all">All Foods</button>
+            <button class="category" data-category="nigerian">🇳🇬 Nigerian</button>
+            <button class="category" data-category="pasta">🍝 Pasta</button>
+            <button class="category" data-category="pizza">🍕 Pizza</button>
+            <button class="category" data-category="fastfood">🍔 Fast Food</button>
+            <button class="category" data-category="snacks">🥟 Snacks</button>
+            <button class="category" data-category="desserts">🍰 Desserts</button>
+            <button class="category" data-category="drinks">🥤 Drinks</button>
+        </div>
+
+        <div class="food-grid" id="food-grid">
+
+            <!-- NIGERIAN FOOD -->
+
+            <article class="food-card" data-category="nigerian">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=700&q=80"
+                    alt="Nigerian jollof rice">
+                    <span class="food-tag">Customer Favourite</span>
+                </div>
+                <div class="food-info">
+                    <h3>Nigerian Jollof Rice</h3>
+                    <p class="food-description">
+                        Smoky, savoury rice cooked in a rich tomato and
+                        pepper sauce with aromatic spices. A colourful,
+                        satisfying West African classic.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,500</span>
+                        <span class="portion">1 plate<br>Medium portion</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Nigerian Jollof Rice',3500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="nigerian">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80"
+                    alt="Egusi soup served with swallow">
+                    <span class="food-tag">Traditional</span>
+                </div>
+                <div class="food-info">
+                    <h3>Egusi Soup & Swallow</h3>
+                    <p class="food-description">
+                        A rich, hearty soup made with ground melon seeds,
+                        leafy vegetables and traditional seasonings.
+                        Enjoy it with your choice of swallow.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦4,500</span>
+                        <span class="portion">1 serving<br>Soup + swallow</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Egusi Soup and Swallow',4500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="nigerian">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=700&q=80"
+                    alt="Amala and Nigerian soup">
+                    <span class="food-tag">Local Delight</span>
+                </div>
+                <div class="food-info">
+                    <h3>Amala & Ewedu</h3>
+                    <p class="food-description">
+                        Soft, smooth amala paired with slippery ewedu
+                        and a savoury stew. A much-loved Yoruba meal
+                        with a comforting, earthy flavour.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,500</span>
+                        <span class="portion">1 serving<br>Amala + soup</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Amala and Ewedu',3500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="nigerian">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80"
+                    alt="Nigerian fried rice">
+                </div>
+                <div class="food-info">
+                    <h3>Nigerian Fried Rice</h3>
+                    <p class="food-description">
+                        Colourful rice tossed with mixed vegetables,
+                        seasonings and a delicious savoury aroma.
+                        Perfect for lunch or a special dinner.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,800</span>
+                        <span class="portion">1 plate<br>Medium portion</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Nigerian Fried Rice',3800)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="nigerian">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"
+                    alt="Pounded yam with traditional soup">
+                </div>
+                <div class="food-info">
+                    <h3>Pounded Yam & Soup</h3>
+                    <p class="food-description">
+                        Soft, stretchy pounded yam served with a rich
+                        traditional soup. A filling meal for anyone
+                        who enjoys authentic Nigerian flavours.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦4,500</span>
+                        <span class="portion">1 serving<br>Yam + soup</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Pounded Yam and Soup',4500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="nigerian">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=700&q=80"
+                    alt="Nigerian pepper soup">
+                </div>
+                <div class="food-info">
+                    <h3>Nigerian Pepper Soup</h3>
+                    <p class="food-description">
+                        A warming, aromatic broth seasoned with
+                        traditional spices. Its peppery flavour
+                        makes it a wonderful choice for soup lovers.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,500</span>
+                        <span class="portion">1 bowl<br>Medium serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Nigerian Pepper Soup',3500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PASTA -->
+
+            <article class="food-card" data-category="pasta">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=80"
+                    alt="Spaghetti and meatballs">
+                    <span class="food-tag">Popular</span>
+                </div>
+                <div class="food-info">
+                    <h3>Spaghetti & Meatballs</h3>
+                    <p class="food-description">
+                        Tender spaghetti covered in rich tomato sauce
+                        and served with seasoned meatballs. Savoury,
+                        comforting and full of Italian-inspired flavour.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦5,500</span>
+                        <span class="portion">1 plate<br>Spaghetti + meatballs</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Spaghetti and Meatballs',5500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="pasta">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+                    alt="Creamy pasta">
+                </div>
+                <div class="food-info">
+                    <h3>Creamy Alfredo Pasta</h3>
+                    <p class="food-description">
+                        Pasta coated in a smooth, creamy sauce with
+                        garlic and herbs. Rich, silky and ideal for
+                        anyone who loves a comforting pasta dish.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦5,000</span>
+                        <span class="portion">1 plate<br>Medium portion</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Creamy Alfredo Pasta',5000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="pasta">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=700&q=80"
+                    alt="Italian pasta">
+                </div>
+                <div class="food-info">
+                    <h3>Classic Tomato Pasta</h3>
+                    <p class="food-description">
+                        A simple, satisfying pasta dish with tomato
+                        sauce, garlic and herbs. Tangy, savoury and
+                        delicious from the first bite.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦4,000</span>
+                        <span class="portion">1 plate<br>Medium portion</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Classic Tomato Pasta',4000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="pasta">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?auto=format&fit=crop&w=700&q=80"
+                    alt="Lasagna">
+                </div>
+                <div class="food-info">
+                    <h3>Cheesy Lasagna</h3>
+                    <p class="food-description">
+                        Layers of pasta, savoury sauce and melted
+                        cheese baked together for a hearty dish
+                        with a rich taste and satisfying texture.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦6,500</span>
+                        <span class="portion">1 slice<br>Large serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Cheesy Lasagna',6500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="pasta">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=700&q=80"
+                    alt="Macaroni and cheese">
+                </div>
+                <div class="food-info">
+                    <h3>Macaroni & Cheese</h3>
+                    <p class="food-description">
+                        Tender macaroni folded into a creamy cheese
+                        sauce. Smooth, cheesy and comforting with
+                        a wonderfully rich flavour.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦4,500</span>
+                        <span class="portion">1 bowl<br>Medium portion</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Macaroni and Cheese',4500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- PIZZA -->
+
+            <article class="food-card" data-category="pizza">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80"
+                    alt="Cheese pizza">
+                    <span class="food-tag">Best Seller</span>
+                </div>
+                <div class="food-info">
+                    <h3>Classic Cheese Pizza</h3>
+                    <p class="food-description">
+                        A golden crust topped with tomato sauce
+                        and melted cheese. Deliciously savoury
+                        with a soft centre and crisp edges.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦7,000</span>
+                        <span class="portion">1 medium pizza<br>6 slices</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Classic Cheese Pizza',7000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="pizza">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=700&q=80"
+                    alt="Pepperoni pizza">
+                </div>
+                <div class="food-info">
+                    <h3>Pepperoni Pizza</h3>
+                    <p class="food-description">
+                        A cheesy pizza topped with pepperoni and
+                        tomato sauce. Enjoy its savoury topping,
+                        stretchy cheese and delicious baked crust.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦8,500</span>
+                        <span class="portion">1 medium pizza<br>6 slices</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Pepperoni Pizza',8500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="pizza">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=700&q=80"
+                    alt="Vegetable pizza">
+                </div>
+                <div class="food-info">
+                    <h3>Garden Veggie Pizza</h3>
+                    <p class="food-description">
+                        A colourful pizza topped with vegetables,
+                        tomato sauce and cheese. Fresh-tasting,
+                        savoury and full of different textures.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦7,500</span>
+                        <span class="portion">1 medium pizza<br>6 slices</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Garden Veggie Pizza',7500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- FAST FOOD -->
+
+            <article class="food-card" data-category="fastfood">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+                    alt="Beef burger">
+                </div>
+                <div class="food-info">
+                    <h3>Classic Beef Burger</h3>
+                    <p class="food-description">
+                        A juicy beef patty in a soft bun with
+                        fresh vegetables and sauce. A hearty,
+                        savoury favourite for burger lovers.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦4,500</span>
+                        <span class="portion">1 burger<br>Single serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Classic Beef Burger',4500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="fastfood">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=700&q=80"
+                    alt="Fried chicken">
+                </div>
+                <div class="food-info">
+                    <h3>Crispy Fried Chicken</h3>
+                    <p class="food-description">
+                        Golden, crunchy chicken seasoned with
+                        savoury spices. Enjoy the crispy coating
+                        and tender meat in every bite.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,500</span>
+                        <span class="portion">2 pieces<br>Chicken only</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Crispy Fried Chicken',3500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="fastfood">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=700&q=80"
+                    alt="French fries">
+                </div>
+                <div class="food-info">
+                    <h3>Golden French Fries</h3>
+                    <p class="food-description">
+                        Crispy golden potato strips with a soft
+                        centre and a light touch of seasoning.
+                        A perfect side dish or snack.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦2,000</span>
+                        <span class="portion">1 pack<br>Medium portion</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Golden French Fries',2000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="fastfood">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80"
+                    alt="Chicken sandwich">
+                </div>
+                <div class="food-info">
+                    <h3>Chicken Sandwich</h3>
+                    <p class="food-description">
+                        Tender chicken, crunchy vegetables and
+                        tasty sauce between slices of bread.
+                        A convenient and satisfying meal.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,500</span>
+                        <span class="portion">1 sandwich<br>Single serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Chicken Sandwich',3500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="fastfood">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80"
+                    alt="Grilled chicken meal">
+                </div>
+                <div class="food-info">
+                    <h3>Grilled Chicken Meal</h3>
+                    <p class="food-description">
+                        Chicken marinated with herbs and spices
+                        and grilled for a smoky, savoury flavour.
+                        Served with a side of vegetables.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦5,500</span>
+                        <span class="portion">1 plate<br>Chicken + sides</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Grilled Chicken Meal',5500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- TACOS -->
+
+            <article class="food-card" data-category="fastfood">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=700&q=80"
+                    alt="Mexican tacos">
+                    <span class="food-tag">International</span>
+                </div>
+                <div class="food-info">
+                    <h3>Mexican Tacos</h3>
+                    <p class="food-description">
+                        Soft or crispy taco shells filled with
+                        seasoned meat, vegetables and sauce.
+                        Fresh, savoury and full of flavour.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦4,500</span>
+                        <span class="portion">2 tacos<br>Single serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Mexican Tacos',4500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- SNACKS -->
+
+            <article class="food-card" data-category="snacks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+                    alt="Samosas">
+                </div>
+                <div class="food-info">
+                    <h3>Crispy Samosas</h3>
+                    <p class="food-description">
+                        Golden pastry parcels with a savoury
+                        filling and a crunchy outer layer.
+                        A delicious snack for any time of day.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,500</span>
+                        <span class="portion">3 pieces<br>Snack pack</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Crispy Samosas',1500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="snacks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=80"
+                    alt="Spring rolls">
+                </div>
+                <div class="food-info">
+                    <h3>Vegetable Spring Rolls</h3>
+                    <p class="food-description">
+                        Crispy pastry rolls filled with vegetables.
+                        Light, crunchy and perfect for a small
+                        bite before your main meal.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,500</span>
+                        <span class="portion">3 pieces<br>Snack pack</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Vegetable Spring Rolls',1500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="snacks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=700&q=80"
+                    alt="Meat pies">
+                </div>
+                <div class="food-info">
+                    <h3>Nigerian Meat Pie</h3>
+                    <p class="food-description">
+                        A golden, buttery pastry with a savoury
+                        meat and vegetable filling. Flaky outside
+                        and soft inside.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,200</span>
+                        <span class="portion">1 pie<br>Single piece</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Nigerian Meat Pie',1200)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="snacks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+                    alt="Nigerian puff puff">
+                </div>
+                <div class="food-info">
+                    <h3>Nigerian Puff-Puff</h3>
+                    <p class="food-description">
+                        Soft, fluffy fried dough balls with a
+                        lightly sweet taste and a golden outside.
+                        A popular Nigerian street snack.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,000</span>
+                        <span class="portion">5 pieces<br>Snack pack</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Nigerian Puff-Puff',1000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="snacks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1621939514649-280e2aa2f2b7?auto=format&fit=crop&w=700&q=80"
+                    alt="Chocolate cookies">
+                </div>
+                <div class="food-info">
+                    <h3>Chocolate Cookies</h3>
+                    <p class="food-description">
+                        Sweet cookies with chocolate pieces,
+                        crisp edges and a soft, chewy centre.
+                        Great for a little afternoon treat.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,500</span>
+                        <span class="portion">3 cookies<br>Snack pack</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Chocolate Cookies',1500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- DESSERTS -->
+
+            <article class="food-card" data-category="desserts">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+                    alt="Chocolate cake">
+                </div>
+                <div class="food-info">
+                    <h3>Chocolate Cake</h3>
+                    <p class="food-description">
+                        Moist chocolate cake with a rich cocoa
+                        flavour and a smooth chocolate topping.
+                        A sweet finish to any meal.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦3,000</span>
+                        <span class="portion">1 slice<br>Single serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Chocolate Cake',3000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="desserts">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=80"
+                    alt="Ice cream">
+                </div>
+                <div class="food-info">
+                    <h3>Vanilla Ice Cream</h3>
+                    <p class="food-description">
+                        Smooth, creamy vanilla ice cream with
+                        a delicate sweetness. A refreshing dessert
+                        for warm afternoons.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦2,000</span>
+                        <span class="portion">2 scoops<br>1 cup</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Vanilla Ice Cream',2000)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="desserts">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80"
+                    alt="Fruit salad">
+                </div>
+                <div class="food-info">
+                    <h3>Fresh Fruit Salad</h3>
+                    <p class="food-description">
+                        A colourful mix of seasonal fruits with
+                        naturally sweet, juicy flavours. Fresh,
+                        bright and easy to enjoy.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦2,500</span>
+                        <span class="portion">1 bowl<br>Medium serving</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Fresh Fruit Salad',2500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <!-- DRINKS -->
+
+            <article class="food-card" data-category="drinks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=80"
+                    alt="Fresh fruit juice">
+                </div>
+                <div class="food-info">
+                    <h3>Fresh Fruit Juice</h3>
+                    <p class="food-description">
+                        A refreshing fruit drink with a bright,
+                        fruity flavour. A lovely accompaniment
+                        to your favourite meal.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,500</span>
+                        <span class="portion">1 glass<br>350 ml</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Fresh Fruit Juice',1500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="drinks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=80"
+                    alt="Iced drink">
+                </div>
+                <div class="food-info">
+                    <h3>Chilled Lemonade</h3>
+                    <p class="food-description">
+                        A cool citrus drink with a refreshing
+                        balance of sweet and tangy flavours.
+                        Perfect for a sunny day.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦1,200</span>
+                        <span class="portion">1 glass<br>350 ml</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Chilled Lemonade',1200)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+            <article class="food-card" data-category="drinks">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=80"
+                    alt="Fruit smoothie">
+                </div>
+                <div class="food-info">
+                    <h3>Fruit Smoothie</h3>
+                    <p class="food-description">
+                        A thick, fruity blend with a smooth texture
+                        and naturally sweet flavour. A colourful
+                        drink for a refreshing break.
+                    </p>
+                    <div class="food-details">
+                        <span class="price">₦2,500</span>
+                        <span class="portion">1 cup<br>400 ml</span>
+                    </div>
+                    <button class="add-button"
+                    onclick="addToCart('Fruit Smoothie',2500)">
+                        + Add to Cart
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+        <p id="no-results" style="display:none;text-align:center;padding:30px;color:#777;">
+            No matching food was found. Try another search.
+        </p>
+
+    </div>
+</section>
+
+<!-- SHOPPING CART -->
+
+<section class="cart-section" id="cart">
+    <div class="container">
+
+        <div class="cart-panel">
+            <h2>🛒 Your Shopping Cart</h2>
+
+            <div id="cart-items">
+                <p class="empty-cart">Your cart is empty. Add a delicious meal!</p>
+            </div>
+
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">₦0</span>
+            </div>
+
+            <button class="primary-button" onclick="checkout()">
+                Continue to Order
+            </button>
+
+            <p class="cart-note">
+                Demonstration cart for this project. Online payment
+                and real order processing are not connected.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROMOTION -->
+
+<section class="promo">
+    <div class="container promo-box">
+
+        <div>
+            <h2>Good Food Makes Every Day Better! 🍕</h2>
+            <p>
+                Discover something delicious and make your next meal special.
+            </p>
+        </div>
+
+        <a href="#menu" class="primary-button">Explore Our Menu →</a>
+
+    </div>
+</section>
+
+<!-- ABOUT US -->
+
+<section class="section" id="about">
+    <div class="container about-grid">
+
+        <div class="about-image">
+            <img
+            src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=85"
+            alt="Food preparation in a kitchen">
+        </div>
+
+        <div class="about-content">
+            <span class="eyebrow" style="color:#ff8c42;font-weight:bold;">
+                A LITTLE ABOUT US
+            </span>
+
+            <h2>Bringing People Together Through Food.</h2>
+
+            <p>
+                At Foodie, we believe food is more than something
+                we eat. It is a way to share happiness, celebrate
+                traditions and create unforgettable moments.
+            </p>
+
+            <p>
+                Our menu brings together beloved Nigerian dishes
+                and exciting international favourites. From the
+                comforting taste of amala and egusi soup to the
+                cheesy goodness of pizza, there is something for
+                different tastes and occasions.
+            </p>
+
+            <p>
+                We aim to make exploring food simple, enjoyable
+                and inspiring, one delicious meal at a time.
+            </p>
+
+            <ul class="about-list">
+                <li>✓ A variety of meals and snacks</li>
+                <li>✓ Clear prices and portion information</li>
+                <li>✓ Descriptions to help you choose</li>
+                <li>✓ A simple, user-friendly menu</li>
+            </ul>
+
+            <a href="#menu" class="primary-button">Discover Our Food</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- STATISTICS -->
+
+<section class="stats">
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <h3>25+</h3>
+            <p>Menu Choices</p>
+        </div>
+
+        <div class="stat">
+            <h3>8</h3>
+            <p>Food Categories</p>
+        </div>
+
+        <div class="stat">
+            <h3>100%</h3>
+            <p>Passion for Food</p>
+        </div>
+
+        <div class="stat">
+            <h3>1</h3>
+            <p>Love for Great Taste</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section class="section" id="how-it-works">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">Simple and Easy</span>
+            <h2>How Foodie Works</h2>
+            <p>
+                Finding your favourite food should be easy.
+                Here is how to explore our menu.
+            </p>
+        </div>
+
+        <div class="steps-grid">
+
+            <div class="step">
+                <div class="step-icon">🔍</div>
+                <h3>1. Explore</h3>
+                <p>
+                    Browse our menu, use the search box and select
+                    a category to discover different meals.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">🛒</div>
+                <h3>2. Add to Cart</h3>
+                <p>
+                    Choose your favourite dishes and add them to
+                    the shopping cart to see your estimated total.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-icon">💚</div>
+                <h3>3. Review Your Choice</h3>
+                <p>
+                    Check your selected meals and total amount.
+                    This demonstration site does not process
+                    actual orders or payments.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CUSTOMER REVIEWS -->
+
+<section class="section reviews" id="reviews">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">What People Say</span>
+            <h2>Words From Food Lovers ⭐</h2>
+            <p>
+                Example testimonials showing how a customer
+                review section can look on a food website.
+            </p>
+        </div>
+
+        <div class="review-grid">
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "I love how easy it is to explore the different
+                    food options. The menu descriptions make choosing
+                    a meal much easier."
+                </p>
+                <div class="review-person">
+                    Amaka O.
+                    <small>Example customer review</small>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "The variety is wonderful! It is nice to see
+                    Nigerian favourites and international dishes
+                    together in one place."
+                </p>
+                <div class="review-person">
+                    Daniel K.
+                    <small>Example customer review</small>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>
+                    "The design is colourful, the prices are easy
+                    to find, and the search feature makes the
+                    menu simple to use."
+                </p>
+                <div class="review-person">
+                    Precious A.
+                    <small>Example customer review</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ -->
+
+<section class="section" id="faq">
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="eyebrow">Need Some Help?</span>
+            <h2>Frequently Asked Questions</h2>
+            <p>
+                Answers to common questions about the Foodie website.
+            </p>
+        </div>
+
+        <div class="faq-list">
+
+            <details>
+                <summary>What kind of food can I find on Foodie?</summary>
+                <p>
+                    You can explore Nigerian dishes, pasta, pizza,
+                    fast food, snacks, desserts and refreshing drinks.
+                </p>
+            </details>
+
+            <details>
+                <summary>Are the prices displayed in Nigerian Naira?</summary>
+                <p>
+                    Yes. The sample menu displays prices using the
+                    Nigerian Naira symbol (₦). The prices are
+                    illustrative and should be updated to match
+                    your actual menu.
+                </p>
+            </details>
+
+            <details>
+                <summary>Can I search for a particular meal?</summary>
+                <p>
+                    Yes. Type a food name into the search box.
+                    The menu will show matching dishes.
+                </p>
+            </details>
+
+            <details>
+                <summary>How does the shopping cart work?</summary>
+                <p>
+                    Click Add to Cart beneath a dish. You can see
+                    your selected meals, change quantities, remove
+                    items and view the estimated total.
+                </p>
+            </details>
+
+            <details>
+                <summary>Can I pay for my food on this website?</summary>
+                <p>
+                    This school-project demonstration does not
+                    process real payments or send orders to a
+                    restaurant. Those features require a secure
+                    backend and payment integration.
+                </p>
+            </details>
+
+            <details>
+                <summary>How can I contact Foodie?</summary>
+                <p>
+                    Open the Contact Us page using the navigation
+                    link. Make sure the link points to your actual
+                    contact page filename.
+                </p>
+            </details>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+    <div class="container">
+
+        <h2>Stay Hungry for Something Amazing! 🍰</h2>
+
+        <p>
+            Enter your email to try our newsletter form demonstration.
+        </p>
+
+        <form class="newsletter-form" id="newsletter-form">
+
+            <input
+            type="email"
+            id="newsletter-email"
+            placeholder="Enter your email address"
+            aria-label="Email address"
+            required>
+
+            <button type="submit" class="primary-button">
+                Subscribe
+            </button>
+
+        </form>
+
+        <p id="newsletter-message" role="status"></p>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-column">
+                <div class="footer-logo">Food<span>ie.</span> 🍽️</div>
+
+                <p>
+                    Discover delicious Nigerian and international
+                    food, explore exciting flavours and find
+                    inspiration for your next meal.
+                </p>
+
+                <p>Good food. Great moments. Happy people.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Our Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#reviews">Customer Reviews</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Food Categories</h3>
+
+                <ul>
+                    <li><a href="#menu" onclick="chooseCategory('nigerian')">Nigerian Food</a></li>
+                    <li><a href="#menu" onclick="chooseCategory('pasta')">Pasta</a></li>
+                    <li><a href="#menu" onclick="chooseCategory('pizza')">Pizza</a></li>
+                    <li><a href="#menu" onclick="chooseCategory('fastfood')">Fast Food</a></li>
+                    <li><a href="#menu" onclick="chooseCategory('desserts')">Desserts</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+
+                <ul>
+                    <li>📍 Lagos, Nigeria</li>
+                    <li>📞 Add your phone number</li>
+                    <li>📧 Add your email address</li>
+                    <li><a href="contact.html">Visit Contact Us →</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; <span id="year"></span> Foodie.
+                All rights reserved.
+            </p>
+
+            <p>
+                Designed with ❤️ for food lovers.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* FOOD SEARCH AND CATEGORY FILTERS */
+
+const searchInput = document.getElementById("food-search");
+const categoryButtons = document.querySelectorAll(".category");
+const foodCards = document.querySelectorAll(".food-card");
+const noResults = document.getElementById("no-results");
+
+let selectedCategory = "all";
+
+function filterFoods() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    foodCards.forEach(function(card) {
+        const category = card.dataset.category;
+        const text = card.innerText.toLowerCase();
+
+        const matchesCategory =
+            selectedCategory === "all" ||
+            category === selectedCategory;
+
+        const matchesSearch = text.includes(searchTerm);
+
+        if (matchesCategory && matchesSearch) {
+            card.style.display = "";
+            visibleCount++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+}
+
+searchInput.addEventListener("input", filterFoods);
+
+categoryButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        categoryButtons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        selectedCategory = button.dataset.category;
+        filterFoods();
+    });
+});
+
+function chooseCategory(category) {
+    selectedCategory = category;
+
+    categoryButtons.forEach(function(button) {
+        button.classList.toggle(
+            "active",
+            button.dataset.category === category
+        );
+    });
+
+    filterFoods();
+}
+
+/* SHOPPING CART */
+
+let cart = {};
+
+function addToCart(name, price) {
+    if (cart[name]) {
+        cart[name].quantity++;
+    } else {
+        cart[name] = {
+            price: price,
+            quantity: 1
+        };
+    }
+
+    renderCart();
+    showToast(name + " added to your cart!");
+}
+
+function changeQuantity(name, amount) {
+    if (!cart[name]) {
+        return;
+    }
+
+    cart[name].quantity += amount;
+
+    if (cart[name].quantity <= 0) {
+        delete cart[name];
+    }
+
+    renderCart();
+}
+
+function removeFromCart(name) {
+    delete cart[name];
+    renderCart();
+    showToast(name + " removed from your cart.");
+}
+
+function formatMoney(amount) {
+    return "₦" + amount.toLocaleString("en-NG");
+}
+
+function renderCart() {
+    const cartItems = document.getElementById("cart-items");
+    const cartCount = document.getElementById("cart-count");
+    const cartTotal = document.getElementById("cart-total");
+
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    let html = "";
+
+    Object.keys(cart).forEach(function(name) {
+        const item = cart[name];
+        const subtotal = item.price * item.quantity;
+
+        totalQuantity += item.quantity;
+        totalPrice += subtotal;
+
+        html += `
+            <div class="cart-item">
+                <div>
+                    <strong>${name}</strong><br>
+                    <small>
+                        ${formatMoney(item.price)} × ${item.quantity}
+                        = ${formatMoney(subtotal)}
+                    </small>
+                    <div>
+                        <button class="remove-button"
+                        onclick="changeQuantity('${name.replace(/'/g, "\\'")}',-1)">
+                            −
+                        </button>
+
+                        <span style="padding:0 10px;">
+                            ${item.quantity}
+                        </span>
+
+                        <button class="remove-button"
+                        onclick="changeQuantity('${name.replace(/'/g, "\\'")}',1)">
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <button class="remove-button"
+                onclick="removeFromCart('${name.replace(/'/g, "\\'")}')">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    if (totalQuantity === 0) {
+        cartItems.innerHTML =
+            '<p class="empty-cart">Your cart is empty. Add a delicious meal!</p>';
+    } else {
+        cartItems.innerHTML = html;
+    }
+
+    cartCount.textContent = totalQuantity;
+    cartTotal.textContent = formatMoney(totalPrice);
+}
+
+/* CHECKOUT DEMONSTRATION */
+
+function checkout() {
+    const totalItems = Object.values(cart).reduce(
+        function(sum, item) {
+            return sum + item.quantity;
+        },
+        0
+    );
+
+    if (totalItems === 0) {
+        showToast("Your cart is empty. Please add a meal first.");
+        return;
+    }
+
+    showToast(
+        "Your cart has " + totalItems +
+        " item(s), totalling " +
+        document.getElementById("cart-total").textContent +
+        ". Real ordering is not connected yet."
+    );
+}
+
+/* NOTIFICATION */
+
+let toastTimer;
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.style.display = "block";
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(function() {
+        toast.style.display = "none";
+    }, 3000);
+}
+
+/* NEWSLETTER DEMONSTRATION */
+
+document.getElementById("newsletter-form").addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
+
+        document.getElementById("newsletter-message").textContent =
+            "Thank you! This is a demonstration form; no subscription was sent.";
+
+        this.reset();
+    }
+);
+
+/* AUTOMATIC COPYRIGHT YEAR */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
+```
